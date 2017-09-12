@@ -6,3 +6,5 @@
 [![codecov.io](http://codecov.io/github/tpapp/TKPappKitchenSink.jl/coverage.svg?branch=master)](http://codecov.io/github/tpapp/TKPappKitchenSink.jl?branch=master)
 
 Code that I use, but did not move into its own library (yet).
+
+See the docstrings for documentation.
