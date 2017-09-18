@@ -1,7 +1,8 @@
 export
     showfull,
     local_test,
-    edit_list
+    edit_list,
+    cleanworkspace
 
 """
     showfull(x)
@@ -83,3 +84,21 @@ edit_list(f::Function; max_methods = 20) =
 
 edit_list(f::Function, t::Type; max_methods = 20, showparents = true) =
     _edit_list(methodswith(t, f, showparents), max_methods)
+
+"""
+    cleanworkspace()
+
+Reset the workspace.
+
+*Note*: basically a gutted out `Base.workspace()`, which does not save the old
+environment.
+"""
+function cleanworkspace()
+    lastbase = Core.Main.Base
+    ccall(:jl_new_main_module, Any, ())
+    newmain = Core.Main
+    ccall(:jl_add_standard_imports, Void, (Any,), newmain)
+    eval(newmain, Expr(:toplevel, :(const Base = $(Expr(:quote, lastbase)))))
+    empty!(Base.package_locks)
+    nothing
+end
