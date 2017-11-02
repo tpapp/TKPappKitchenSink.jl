@@ -1,5 +1,7 @@
 export density_slice
 
+using Plots
+
 """
     density_slice(ℓ, x, ix1, x1s, ix2, x2s; [xlab], [ylab])
 
