@@ -1,8 +1,13 @@
+__precompile__()
 module TKPappKitchenSink
 
-using Requires
+using ArgCheck
+using DocStringExtensions
+using PGFPlotsX
+using StaticArrays
 
-@require Plots include("plots.jl")
 include("utilities.jl")
+include("math.jl")
+include("plots.jl")
 
 end # module
